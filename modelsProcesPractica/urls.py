@@ -19,7 +19,7 @@ from django.urls import path
 from tasksOrganizerApp.views import createCourse, homePage
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('createCourse/', createCourse),
-    path('', homePage),
+    path('admin/', admin.site.urls, name='admin'),
+    path('createCourse/', createCourse, name='createCourse'),
+    path('', homePage, name='homePage'),
 ]
