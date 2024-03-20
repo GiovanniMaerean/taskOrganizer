@@ -30,11 +30,12 @@ class Task(models.Model):
     deadline = models.DateField()
     hour = models.TimeField()
     description = models.TextField()
-    priority = [
+    PRIORITY_CHOICES = [
         ('3', 'Low'),
         ('2', "Medium"),
         ('1', "High")
     ]
+    priority = models.CharField(max_length=1, choices=PRIORITY_CHOICES, default='2')
 
     def __str__(self):
         return self.name

@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from tasksOrganizerApp.views import createCourse, homePage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('createCourse/', createCourse),
+    path('', homePage),
 ]
