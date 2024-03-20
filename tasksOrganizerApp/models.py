@@ -24,4 +24,17 @@ class Subject(models.Model):
         return self.name
 
 
-    
+class Task(models.Model):
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    name = models.CharField(max_length=150)
+    deadline = models.DateField()
+    hour = models.TimeField()
+    description = models.TextField()
+    priority = [
+        ('3', 'Low'),
+        ('2', "Medium"),
+        ('1', "High")
+    ]
+
+    def __str__(self):
+        return self.name
