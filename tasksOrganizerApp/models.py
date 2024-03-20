@@ -8,7 +8,7 @@ class Course(models.Model):
     place = models.CharField(max_length=200)
     year = models.IntegerField()
     beginningDate = models.DateField()
-    finalDate = models.DateField()
+    endingDate = models.DateField()
 
     def __str__(self):
         return f"{self.title} {self.year}"
