@@ -23,6 +23,15 @@ def createSubject(request):
         return redirect('homePage')
     return render(request, 'createSubject.html', context)
 
+def createTask(request):
+    context = {
+        'form': TaskForm(request.POST)
+    }
+    if context['form'].is_valid():
+        context['form'].save()
+        return redirect('homePage')
+    return render(request, 'createTask.html', context)
+
 
 def homePage(request):
     return render(request, 'homePage.html')

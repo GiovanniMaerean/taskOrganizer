@@ -28,8 +28,8 @@ class Task(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     name = models.CharField(max_length=150)
     deadline = models.DateField()
-    hour = models.TimeField()
-    description = models.TextField()
+    hour = models.TimeField(default='00:00')
+    description = models.TextField(null=True, blank=True)
     PRIORITY_CHOICES = [
         ('3', 'Low'),
         ('2', "Medium"),
