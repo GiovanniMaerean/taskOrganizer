@@ -16,12 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tasksOrganizerApp.views import createCourse, homePage, createSubject, createTask
+from tasksOrganizerApp.views import createCourse, homePage, createSubject, createTask, TasksListView
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('createCourse/', createCourse, name='createCourse'),
     path('createSubject/', createSubject, name='createSubject'),
     path('createTask/', createTask, name='createTask'),
-    path('', homePage, name='homePage'),
+    path('', TasksListView.as_view(), name='homePage'),
 ]

@@ -1,6 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
+from django.views.generic import ListView
+
 from tasksOrganizerApp.forms import CourseForm, SubjectForm, TaskForm
+from .models import Course
+
+
+class TasksListView(ListView):
+    model = Course
+    template_name = 'homePage.html'
+    context_object_name = 'courses'
 
 
 # Create your views here.

@@ -9,5 +9,39 @@
     <a href="http://127.0.0.1:8000/createCourse" > <button type="submit">Crear curso</button> </a>
     <a href="http://127.0.0.1:8000/createSubject" > <button type="submit">Crear asignatura</button> </a>
     <a href="http://127.0.0.1:8000/createTask" > <button type="submit">Crear tarea</button> </a>
+    <div>
+        <h1>Lista de Tareas</h1>
+         <ul>
+             {% for course in courses %}
+                 <li>
+                    <a onclick="openTab('{{ course.title|slugify }}-{{ course.year }}')" href="#">{{ course.title }}</a>
+                 </li>
+             {% endfor %}
+         </ul>
+
+        <div>
+            {% for course in courses %}
+                <div style="display: none" class="tab" id="{{ course.title|slugify }}-{{ course.year }}-content">
+                    <h3>{{ course.title }}</h3>
+                    <ul>
+                        {% for subject in course.subject_set.all %}
+                            <li>{{ subject.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+<script>
+    function openTab(tabName) {
+        var i, tabContent;
+        tabContent = document.getElementsByClassName("tab");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        document.getElementById(tabName + "-content").style.display = "block";
+    }
+</script>
 </body>
 </html>
