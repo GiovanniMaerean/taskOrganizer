@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tasksOrganizerApp.views import createCourse, homePage, createSubject, createTask, TasksListView
+from tasksOrganizerApp.views import createCourse, homePage, createSubject, createTask, TasksListView, signInUp, signIn, signUp
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
@@ -24,4 +24,7 @@ urlpatterns = [
     path('createSubject/', createSubject, name='createSubject'),
     path('createTask/', createTask, name='createTask'),
     path('', TasksListView.as_view(), name='homePage'),
+    path('signInUp/', signInUp, name='signInUp'),
+    path('signIn/', signIn, name='signIn'),
+    path('signUp/', signUp, name='signUp')
 ]
