@@ -1,13 +1,15 @@
-from django.core.exceptions import ObjectDoesNotExist
+from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, Http404
 from django.views.generic import ListView
-from django.contrib.auth.hashers import check_password
-from tasksOrganizerApp.forms import CourseForm, SubjectForm, TaskForm, SignInForm, SignUpForm
-from .models import Course, UserTO
+
+from tasksOrganizerApp.forms import CourseForm, SubjectForm, TaskForm
+from .models import Course
 
 
-class TasksListView(ListView):
+class TasksListView(LoginRequiredMixin,ListView):
     model = Course
     template_name = 'homePage.html'
     context_object_name = 'courses'
@@ -33,6 +35,7 @@ def createSubject(request):
         return redirect('homePage')
     return render(request, 'createSubject.html', context)
 
+
 def createTask(request):
     context = {
         'form': TaskForm(request.POST)
@@ -43,46 +46,33 @@ def createTask(request):
     return render(request, 'createTask.html', context)
 
 
-def homePage(request):
-    return render(request, 'homePage.html')
+"""def homePage(request):
+    return render(request, 'homePage.html')"""
+
 
 def signInUp(request):
     return render(request, 'signInUp.html')
 
-def signIn(request):
-    form = SignInForm(request.POST)
-    context = {
-        'form' : form
-    }
-    if context['form'].is_valid():
-        email = form.cleaned_data['email']
-        password = form.cleaned_data['password']
 
-        if authenticateUser(email, password):
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'register.html', {'form': form})
+
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
             return redirect('homePage')
         else:
-            form.add_error(None, 'Correo electrónico o contraseña incorrectos.')
-    else:
-        form = SignInForm()
-    return render(request, 'signIn.html', context)
-
-def authenticateUser(email, password):
-    try:
-        user = UserTO.objects.get(email=email)
-    except UserTO.DoesNotExist:
-        return False
-    if email == user.email and password == user.password:
-        return True
-    else:
-        return False
-
-
-
-def signUp(request):
-    context = {
-        'form': SignUpForm(request.POST)
-    }
-    if context['form'].is_valid():
-        context['form'].save()
-        return redirect('homePage')
-    return render(request, 'signUp.html', context)
+            messages.success(request, ("Username or Password is incorrect"))
+    return render(request, 'login.html')

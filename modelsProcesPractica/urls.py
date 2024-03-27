@@ -16,15 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tasksOrganizerApp.views import createCourse, homePage, createSubject, createTask, TasksListView, signInUp, signIn, signUp
+from tasksOrganizerApp.views import createCourse, homePage, createSubject, createTask, TasksListView, signInUp, login, \
+    register
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('createCourse/', createCourse, name='createCourse'),
     path('createSubject/', createSubject, name='createSubject'),
     path('createTask/', createTask, name='createTask'),
-    path('', TasksListView.as_view(), name='homePage'),
-    path('signInUp/', signInUp, name='signInUp'),
-    path('signIn/', signIn, name='signIn'),
-    path('signUp/', signUp, name='signUp')
+    path('homePage/', TasksListView.as_view(template_name='homePage.html'), name='homePage'),
+    path('', signInUp, name='signInUp'),
+    path('accounts/login/', login, name='login'),
+    path('register/', register, name='register')
 ]

@@ -8,7 +8,9 @@
     <h1>Iniciar sesión</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <input type="text" name="username">
+
+        <input type="password" name="password">
         <button type="submit">Iniciar sesión</button>
     </form>
 </body>
