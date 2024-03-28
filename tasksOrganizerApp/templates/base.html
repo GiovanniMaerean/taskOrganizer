@@ -1,10 +1,62 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-    <title>Base</title>
+    <title>{% block title %}Base{% endblock %}</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background:
+                    linear-gradient(45deg, rgb(81, 136, 241), transparent),
+                    repeating-linear-gradient(45deg, rgb(81, 138, 222) 0%, rgb(96, 134, 204) 5%, transparent 5%, transparent 10%),
+                    rgb(24, 43, 229) repeating-linear-gradient(-45deg, rgba(20, 79, 245, 0.38) 0%, rgba(53, 137, 222, 0.5) 5%, transparent 5%, transparent 10%)
+        }
+        .navBar {
+            text-align: center;
+            background-color: #768ba6;
+            width: 35%;
+            margin: 0 auto;
+            border: 4px solid black;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .fila_menu{
+            display: inline-block;
+            margin-right: 20px;
+            vertical-align: middle;
+        }
+        .pagesContent{
+            text-align: center;
+            background-color: antiquewhite;
+            width: 50%;
+            margin: 0 auto;
+            border: 4px solid black;
+            border-radius: 15px;
+        }
+        ul {
+            text-align: center;
+            padding-left: 0;
+        }
+
+        ul li {
+            list-style-position: inside;
+        }
+
+
+    </style>
 </head>
 <body>
-    <a href="http://127.0.0.1:8000/logOut"> <button type="submit">Cerrar sesión</button> </a>
+    <div class="navBar">
+        <a href="http://127.0.0.1:8000/homePage/" class="fila_menu"> <img src="{% static 'img/homeIcon.png' %}" alt="Home" width="30" height="30"></a>
+        <a href="http://127.0.0.1:8000/createCourse" class="fila_menu"> <button type="submit">Crear curso</button></a>
+        <a href="http://127.0.0.1:8000/createSubject" class="fila_menu"> <button type="submit">Crear asignatura</button></a>
+        <a href="http://127.0.0.1:8000/createTask" class="fila_menu"> <button type="submit">Crear tarea</button></a>
+        <a href="http://127.0.0.1:8000/logOut" class = "fila_menu"> <button type="submit">Cerrar sesión</button></a>
+    </div>
+    <div class="pagesContent">
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>

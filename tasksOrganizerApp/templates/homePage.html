@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Página principal</title>
-    <style>
-        .fila_menu{
-            display: inline;
-            margin-right: 20px;
-        }
-    </style>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Página principal{% endblock %}
+
+{% block content %}
     <h1>Tareas pendientes</h1>
-    <a href="http://127.0.0.1:8000/createCourse" class="fila_menu"> <button type="submit">Crear curso</button> </a>
+    <!--<a href="http://127.0.0.1:8000/createCourse" class="fila_menu"> <button type="submit">Crear curso</button> </a>
     <a href="http://127.0.0.1:8000/createSubject" class="fila_menu"> <button type="submit">Crear asignatura</button> </a>
     <a href="http://127.0.0.1:8000/createTask" class="fila_menu"> <button type="submit">Crear tarea</button> </a>
-    <a href="http://127.0.0.1:8000/logOut" class = "fila_menu"> <button type="submit">Cerrar sesión</button> </a>
+    <a href="http://127.0.0.1:8000/logOut" class = "fila_menu"> <button type="submit">Cerrar sesión</button> </a>-->
     <div>
         <h1>Lista de Cursos</h1>
         <ul>
@@ -58,5 +50,4 @@
             document.getElementById(tabName + "-content").style.display = "block";
         }
     </script>
-</body>
-</html>
+{% endblock %}

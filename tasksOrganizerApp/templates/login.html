@@ -3,15 +3,44 @@
 <head>
 <meta charset="UTF-8">
     <title>Iniciar sesión</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background:
+                    linear-gradient(45deg, rgb(81, 136, 241), transparent),
+                    repeating-linear-gradient(45deg, rgb(81, 138, 222) 0%, rgb(96, 134, 204) 5%, transparent 5%, transparent 10%),
+                    rgb(24, 43, 229) repeating-linear-gradient(-45deg, rgba(20, 79, 245, 0.38) 0%, rgba(53, 137, 222, 0.5) 5%, transparent 5%, transparent 10%)
+        }
+        .pagesContent {
+            text-align: center;
+            background-color: antiquewhite;
+            width: 30%;
+            margin: 20vh auto;
+            padding: 20px;
+            border: 4px solid black;
+            border-radius: 15px;
+        }
+
+        .pagesContent input,
+        .pagesContent button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Iniciar sesión</h1>
-    <form method="post">
-        {% csrf_token %}
-        <input type="text" name="username">
-
-        <input type="password" name="password">
-        <button type="submit">Iniciar sesión</button>
-    </form>
+    <div class="pagesContent">
+        <h1>Iniciar sesión</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="nombre del usuario">
+            <input type="password" name="password" placeholder="contraseña">
+            <button type="submit">Iniciar sesión</button>
+        </form>
+    </div>
 </body>
 </html>

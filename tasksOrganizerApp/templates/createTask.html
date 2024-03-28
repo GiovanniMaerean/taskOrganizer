@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-    <title>Crear Tarea</title>
-</head>
+{% extends 'base.html' %}
+{% block title %}Crear Tarea{% endblock %}
+{% block content %}
 <body>
     <h1>Crea una tarea</h1>
     <form method="post">
@@ -12,4 +9,4 @@
         <button type="Submit">Crear</button>
     </form>
 </body>
-</html>
+{% endblock %}
