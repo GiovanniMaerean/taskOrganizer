@@ -45,6 +45,10 @@
                 <span>{{ course.endingDate }}</span>
             </div>
         </div>
+        <form method="post" action="{% url 'deleteCourse' courseId=course.id %}">
+            {% csrf_token %}
+            <button type="submit">Eliminar</button>
+        </form>
     </div>
 </body>
 {% endblock %}

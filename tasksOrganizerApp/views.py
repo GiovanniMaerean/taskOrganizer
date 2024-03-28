@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
@@ -119,3 +120,31 @@ def coursedetails(request, courseId):
         'course' : get_object_or_404(Course, pk=courseId)
     }
     return render(request, 'courseDetails.html', context)
+
+
+@login_required(login_url='/')
+def deleteTask(request, taskId):
+    task = get_object_or_404(Task, pk=taskId)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('homePage')
+    else:
+        return HttpResponse("Bad Request: Only POST requests are allowed for this view.")
+
+@login_required(login_url='/')
+def deleteSubject(request, subjectId):
+    subject = get_object_or_404(Subject, pk=subjectId)
+    if request.method == 'POST':
+        subject.delete()
+        return redirect('homePage')
+    else:
+        return HttpResponse("Bad Request: Only POST requests are allowed for this view.")
+
+@login_required(login_url='/')
+def deleteCourse(request, courseId):
+    course = get_object_or_404(Course, pk=courseId)
+    if request.method == 'POST':
+        course.delete()
+        return redirect('homePage')
+    else:
+        return HttpResponse("Bad Request: Only POST requests are allowed for this view.")
