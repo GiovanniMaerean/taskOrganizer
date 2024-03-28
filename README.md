@@ -67,3 +67,6 @@ Todas las tareas tienen una asignatura asociada, y todas las asignaturas tienen 
 ### CREACIÓN DE INSTANCIAS
 Para crear una nueva instancia deberemos dirigirnos al apartado específico de la instancia que queramos crear, ubicado en la barra superior. Una vez nos hayamos movido a dicha vista, deberemos rellenar el formulario que generará la instancia con todos los datos que le proporcionemos. Cuando hayamos ingresado los datos, solo quedará darle a "Crear" para crear la instancia. La aplicación nos mostrará a continuación los detalles de dicha instancia.
 
+### ELIMINACIÓN DE INSTANCIAS
+Para eliminar una instancia ya creada, deberemos ubicarnos en la página principal y ver los detalles de la instancia específica que queremos borrar. Una vez estemos en los detalles de la vista, tan sólo deberemos darle al botón "Borrar" para eliminar dicha vista y ser redirigidos a la página principal de nuevo.
+
