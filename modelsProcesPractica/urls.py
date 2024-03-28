@@ -19,14 +19,15 @@ from django.urls import path
 """from tasksOrganizerApp.views import createCourse, homePage, createSubject, createTask, TasksListView, signInUp, login, \
     register"""
 from tasksOrganizerApp.views import createCourse, createSubject, createTask, TasksListView, signInUp, logIn, \
-    register, logOut
+    register, logOut, homePage
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('createCourse/', createCourse, name='createCourse'),
     path('createSubject/', createSubject, name='createSubject'),
     path('createTask/', createTask, name='createTask'),
-    path('homePage/', TasksListView.as_view(template_name='homePage.html'), name='homePage'),
+    #path('homePage/', TasksListView.as_view(template_name='homePage.html'), name='homePage'),
+    path('homePage/', homePage, name='homePage'),
     path('', signInUp, name='signInUp'),
     path('accounts/login/', logIn, name='login'),
     path('register/', register, name='register'),

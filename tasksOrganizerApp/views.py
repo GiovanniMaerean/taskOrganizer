@@ -17,7 +17,7 @@ class TasksListView(LoginRequiredMixin,ListView):
 
 
 # Create your views here.
-@login_required
+@login_required(login_url='/')
 def createCourse(request):
     context = {
         'form': CourseForm(request.POST)
@@ -28,8 +28,7 @@ def createCourse(request):
     return render(request, 'createCourse.html', context)
 
 
-@login_required
-
+@login_required(login_url='/')
 def createSubject(request):
     context = {
         'form': SubjectForm(request.POST)
@@ -40,8 +39,7 @@ def createSubject(request):
     return render(request, 'createSubject.html', context)
 
 
-@login_required
-
+@login_required(login_url='/')
 def createTask(request):
     context = {
         'form': TaskForm(request.POST)
@@ -52,8 +50,9 @@ def createTask(request):
     return render(request, 'createTask.html', context)
 
 
-"""def homePage(request):
-    return render(request, 'homePage.html')"""
+@login_required(login_url='/')
+def homePage(request):
+    return render(request, 'homePage.html')
 
 
 def signInUp(request):
