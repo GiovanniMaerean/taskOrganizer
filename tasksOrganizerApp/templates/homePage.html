@@ -32,7 +32,7 @@
                                         <h4>Lista de tareas:</h4>
                                         <ul>
                                             {% for task in subject.task_set.all %}
-                                                <li>{{ task.name }}</li>
+                                                <li><a href="{% url 'taskDetails' task.id %}">{{ task.name }}</a></li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}

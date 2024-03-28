@@ -32,5 +32,5 @@ urlpatterns = [
     path('accounts/login/', logIn, name='login'),
     path('register/', register, name='register'),
     path('logOut/', logOut, name='logOut'),
-    path('taskDetails/', taskdetails, name='taskDetails'),
+    path('taskDetails/<int:taskId>/', taskdetails, name='taskDetails'),
 ]

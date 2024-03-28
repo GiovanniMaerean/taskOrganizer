@@ -2,12 +2,12 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 
 from tasksOrganizerApp.forms import CourseForm, SubjectForm, TaskForm
-from .models import Course
+from .models import Course, Task
 
 
 class TasksListView(LoginRequiredMixin,ListView):
@@ -89,5 +89,8 @@ def logOut(request):
     logout(request)
     return redirect('signInUp')
 
-def taskdetails(request):
-    return render(request, 'taskDetails.html')
+def taskdetails(request, taskId):
+    context = {
+        'task' : get_object_or_404(Task, pk=taskId)
+    }
+    return render(request, 'taskDetails.html', context)

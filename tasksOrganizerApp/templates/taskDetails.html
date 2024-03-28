@@ -2,17 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Tarea</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .task-details {
+            margin-top: 30px;
+        }
+        .task-detail-item {
+            margin-bottom: 10px;
+        }
+        .task-detail-label {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h1>Task details</h1>
-    <ul>
-        {{ task.subject }}
-        {{ task.name }}
-        {{ task.deadline }}
-        {{ task.hour }}
-        {{ task.description }}
-        {{ task.priority }}
-    </ul>
+    <div class="container">
+        <h1>Detalles de la Tarea</h1>
+        <div class="task-details">
+            <div class="task-detail-item">
+                <span class="task-detail-label">Asignatura:</span>
+                <span>{{ task.subject.name }}</span>
+            </div>
+            <div class="task-detail-item">
+                <span class="task-detail-label">Nombre:</span>
+                <span>{{ task.name }}</span>
+            </div>
+            <div class="task-detail-item">
+                <span class="task-detail-label">Fecha límite:</span>
+                <span>{{ task.deadline }}</span>
+            </div>
+            <div class="task-detail-item">
+                <span class="task-detail-label">Hora:</span>
+                <span>{{ task.hour }}</span>
+            </div>
+            <div class="task-detail-item">
+                <span class="task-detail-label">Descripción:</span>
+                <span>{{ task.description }}</span>
+            </div>
+            <div class="task-detail-item">
+                <span class="task-detail-label">Prioridad:</span>
+                <span>
+                    {% if task.priority == '1' %}
+                        Alta
+                    {% elif task.priority == '2' %}
+                        Media
+                    {% else %}
+                        Baja
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
