@@ -5,19 +5,22 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Course(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     place = models.CharField(max_length=200)
     year = models.IntegerField()
     beginningDate = models.DateField()
     endingDate = models.DateField()
-    creatorUser = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    creatorUser = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='courseUser')
 
     def __str__(self):
         return f"{self.title} {self.year}"
 
 
 class Subject(models.Model):
+    id = models.AutoField(primary_key=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    creatorUser = models.ForeignKey(Course, on_delete=models.CASCADE, null=True,related_name='subjectUser')
     name = models.CharField(max_length=30)
     teacher = models.CharField(max_length=50)
     credits = models.IntegerField()
@@ -28,6 +31,7 @@ class Subject(models.Model):
 
 class Task(models.Model):
     id = models.AutoField(primary_key=True)
+    creatorUser = models.ForeignKey(Subject, on_delete=models.CASCADE, null=True,related_name='taskUser')
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     name = models.CharField(max_length=150)
     deadline = models.DateField()

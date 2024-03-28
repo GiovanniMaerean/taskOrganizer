@@ -7,7 +7,7 @@ from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 
 from tasksOrganizerApp.forms import CourseForm, SubjectForm, TaskForm
-from .models import Course, Task
+from .models import Course, Task, Subject
 
 
 class TasksListView(LoginRequiredMixin,ListView):
@@ -97,8 +97,25 @@ def logOut(request):
     logout(request)
     return redirect('signInUp')
 
+@login_required(login_url='/')
 def taskdetails(request, taskId):
     context = {
         'task' : get_object_or_404(Task, pk=taskId)
     }
     return render(request, 'taskDetails.html', context)
+
+
+@login_required(login_url='/')
+def subjectdetails(request, subjectId):
+    context = {
+        'subject' : get_object_or_404(Subject, pk=subjectId)
+    }
+    return render(request, 'subjectDetails.html', context)
+
+
+@login_required(login_url='/')
+def coursedetails(request, courseId):
+    context = {
+        'course' : get_object_or_404(Course, pk=courseId)
+    }
+    return render(request, 'courseDetails.html', context)

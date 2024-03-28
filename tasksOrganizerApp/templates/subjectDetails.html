@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la asignatura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .task-details {
+            margin-top: 30px;
+        }
+        .task-detail-item {
+            margin-bottom: 10px;
+        }
+        .task-detail-label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Detalles de la asignatura</h1>
+        <div class="subject-details">
+            <div class="subject-detail-item">
+                <span class="subject-detail-label">Nombre:</span>
+                <span>{{ subject.name }}</span>
+            </div>
+            <div class="subject-detail-item">
+                <span class="subject-detail-label">Curso:</span>
+                <span>{{ subject.course }}</span>
+            </div>
+            <div class="subject-detail-item">
+                <span class="course-detail-label">Profesor:</span>
+                <span>{{ subject.teacher }}</span>
+            </div>
+            <div class="subject-detail-item">
+                <span class="subject-detail-label">Creditos:</span>
+                <span>{{ subject.credits }}</span>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

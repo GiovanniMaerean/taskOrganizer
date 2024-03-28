@@ -22,17 +22,20 @@
             {% for course in courses %}
                 <li>
                     <a onclick="openTab('{{ course.title|slugify }}-{{ course.year }}')" href="#">{{ course.title }}</a>
+                    <a href="{% url 'courseDetails' course.id %}"><button type="submit">Ver detalles</button></a>
                     <div id="{{ course.title|slugify }}-{{ course.year }}-content" style="display: none;" class="tab">
                         <h3>Lista de asignaturas:</h3>
                         <ul>
                             {% for subject in course.subject_set.all %}
                                 <li>
                                     {{ subject.name }}
+                                    <a href="{% url 'subjectDetails' subject.id %}"><button type="submit">Ver detalles</button></a>
                                     {% if subject.task_set.all %}
                                         <h4>Lista de tareas:</h4>
                                         <ul>
                                             {% for task in subject.task_set.all %}
-                                                <li><a href="{% url 'taskDetails' task.id %}">{{ task.name }}</a></li>
+                                                <li>{{ task.name }}</li>
+                                                <a href="{% url 'taskDetails' task.id %}"><button type="submit">Ver detalles</button></a>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}

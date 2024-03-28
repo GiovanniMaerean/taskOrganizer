@@ -19,7 +19,7 @@ from django.urls import path
 """from tasksOrganizerApp.views import createCourse, homePage, createSubject, createTask, TasksListView, signInUp, login, \
     register"""
 from tasksOrganizerApp.views import createCourse, createSubject, createTask, TasksListView, signInUp, logIn, \
-    register, logOut, homePage, taskdetails
+    register, logOut, homePage, taskdetails, subjectdetails, coursedetails
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
@@ -33,4 +33,6 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('logOut/', logOut, name='logOut'),
     path('taskDetails/<int:taskId>/', taskdetails, name='taskDetails'),
+    path('subjectDetails/<int:subjectId>/', subjectdetails, name='subjectDetails'),
+    path('courseDetails/<int:courseId>/', coursedetails, name='courseDetails'),
 ]

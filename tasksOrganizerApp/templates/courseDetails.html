@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del curso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .task-details {
+            margin-top: 30px;
+        }
+        .task-detail-item {
+            margin-bottom: 10px;
+        }
+        .task-detail-label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Detalles del curso</h1>
+        <div class="course-details">
+            <div class="course-detail-item">
+                <span class="course-detail-label">Nombre:</span>
+                <span>{{ course.title }}</span>
+            </div>
+            <div class="course-detail-item">
+                <span class="course-detail-label">Lugar:</span>
+                <span>{{ course.place }}</span>
+            </div>
+            <div class="course-detail-item">
+                <span class="course-detail-label">Año:</span>
+                <span>{{ course.year }}</span>
+            </div>
+            <div class="course-detail-item">
+                <span class="course-detail-label">Fecha de inicio:</span>
+                <span>{{ course.beginningDate }}</span>
+            </div>
+            <div class="course-detail-item">
+                <span class="course-detail-label">Fecha de finalización:</span>
+                <span>{{ course.endingDate }}</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
