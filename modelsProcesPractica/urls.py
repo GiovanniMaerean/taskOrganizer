@@ -18,8 +18,8 @@ from django.contrib import admin
 from django.urls import path
 """from tasksOrganizerApp.views import createCourse, homePage, createSubject, createTask, TasksListView, signInUp, login, \
     register"""
-from tasksOrganizerApp.views import createCourse, createSubject, createTask, TasksListView, signInUp, login, \
-    register
+from tasksOrganizerApp.views import createCourse, createSubject, createTask, TasksListView, signInUp, logIn, \
+    register, logOut
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
@@ -28,6 +28,7 @@ urlpatterns = [
     path('createTask/', createTask, name='createTask'),
     path('homePage/', TasksListView.as_view(template_name='homePage.html'), name='homePage'),
     path('', signInUp, name='signInUp'),
-    path('accounts/login/', login, name='login'),
-    path('register/', register, name='register')
+    path('accounts/login/', logIn, name='login'),
+    path('register/', register, name='register'),
+    path('logOut/', logOut, name='logOut')
 ]

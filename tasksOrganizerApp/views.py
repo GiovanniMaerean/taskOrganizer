@@ -1,9 +1,10 @@
 from django.contrib import messages
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
+from django.contrib.auth.decorators import login_required
 
 from tasksOrganizerApp.forms import CourseForm, SubjectForm, TaskForm
 from .models import Course
@@ -16,6 +17,7 @@ class TasksListView(LoginRequiredMixin,ListView):
 
 
 # Create your views here.
+@login_required
 def createCourse(request):
     context = {
         'form': CourseForm(request.POST)
@@ -26,6 +28,8 @@ def createCourse(request):
     return render(request, 'createCourse.html', context)
 
 
+@login_required
+
 def createSubject(request):
     context = {
         'form': SubjectForm(request.POST)
@@ -35,6 +39,8 @@ def createSubject(request):
         return redirect('homePage')
     return render(request, 'createSubject.html', context)
 
+
+@login_required
 
 def createTask(request):
     context = {
@@ -65,7 +71,7 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
-def login(request):
+def logIn(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -76,3 +82,7 @@ def login(request):
         else:
             messages.success(request, ("Username or Password is incorrect"))
     return render(request, 'login.html')
+
+def logOut(request):
+    logout(request)
+    return redirect('signInUp')
