@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -9,6 +10,7 @@ class Course(models.Model):
     year = models.IntegerField()
     beginningDate = models.DateField()
     endingDate = models.DateField()
+    creatorUser = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return f"{self.title} {self.year}"

@@ -23,7 +23,9 @@ def createCourse(request):
         'form': CourseForm(request.POST)
     }
     if context['form'].is_valid():
-        context['form'].save()
+        course = context['form'].save(commit=False)
+        course.creatorUser = request.user
+        course.save()
         return redirect('homePage')
     return render(request, 'createCourse.html', context)
 
@@ -52,9 +54,15 @@ def createTask(request):
 
 @login_required(login_url='/')
 def homePage(request):
-    context = {
-        'courses': Course.objects.all()
-    }
+    courses = Course.objects.filter(creatorUser=request.user)
+    if not courses.exists():
+        context = {
+            'courses': []
+        }
+    else:
+        context = {
+            'courses': courses
+        }
     return render(request, 'homePage.html', context)
 
 
