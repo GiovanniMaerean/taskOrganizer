@@ -52,7 +52,10 @@ def createTask(request):
 
 @login_required(login_url='/')
 def homePage(request):
-    return render(request, 'homePage.html')
+    context = {
+        'courses': Course.objects.all()
+    }
+    return render(request, 'homePage.html', context)
 
 
 def signInUp(request):
@@ -85,3 +88,6 @@ def logIn(request):
 def logOut(request):
     logout(request)
     return redirect('signInUp')
+
+def taskdetails(request):
+    return render(request, 'taskDetails.html')
