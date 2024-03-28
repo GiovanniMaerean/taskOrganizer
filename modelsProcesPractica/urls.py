@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tasksOrganizerApp.views import createCourse, homePage, createSubject, createTask, TasksListView, signInUp, login, \
+"""from tasksOrganizerApp.views import createCourse, homePage, createSubject, createTask, TasksListView, signInUp, login, \
+    register"""
+from tasksOrganizerApp.views import createCourse, createSubject, createTask, TasksListView, signInUp, login, \
     register
 
 urlpatterns = [

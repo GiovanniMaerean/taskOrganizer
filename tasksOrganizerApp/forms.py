@@ -1,5 +1,6 @@
 from django import forms
-from .models import Course, Subject, Task, UserTO
+#from .models import Course, Subject, Task, UserTO
+from .models import Course, Subject, Task
 
 
 class DateInput(forms.DateInput):
@@ -27,7 +28,7 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = ['subject', 'name', 'deadline', 'hour', 'description', 'priority']
 
-class SignUpForm(forms.ModelForm):
+"""class SignUpForm(forms.ModelForm):
     class Meta:
         model = UserTO
         fields = ['name', 'email', 'password']
@@ -38,3 +39,4 @@ class SignInForm(forms.ModelForm):
     class Meta:
         model = UserTO
         fields = ['email', 'password']
+"""
