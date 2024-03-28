@@ -4,7 +4,7 @@ La aplicación web “Task Organizer” se trata de una aplicación que permitir
 
 Los usuarios tendrán cuentas asociadas a ellos, por lo que todas las clases, asignaturas y tareas serán privadas para dicho usuario, y no podrán ser accedidas por otros usuarios.
 
-##DEPENDENCIAS
+## DEPENDENCIAS
 Para ejecutar todas las dependencias de la aplicación web se pueden instalar mediante el comando de poetry:
 
 ```poetry
