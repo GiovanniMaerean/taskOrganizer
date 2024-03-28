@@ -33,7 +33,7 @@ def createCourse(request):
 @login_required(login_url='/')
 def createSubject(request):
     context = {
-        'form': SubjectForm(request.POST)
+        'form': SubjectForm(request.user ,request.POST)
     }
     if context['form'].is_valid():
         context['form'].save()
@@ -44,7 +44,7 @@ def createSubject(request):
 @login_required(login_url='/')
 def createTask(request):
     context = {
-        'form': TaskForm(request.POST)
+        'form': TaskForm(request.user ,request.POST)
     }
     if context['form'].is_valid():
         context['form'].save()

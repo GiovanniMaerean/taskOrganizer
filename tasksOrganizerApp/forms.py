@@ -12,31 +12,24 @@ class CourseForm(forms.ModelForm):
         model = Course
         fields = ['title', 'place', 'year', 'beginningDate', 'endingDate']
         widgets = {
-            'beginningDate': DateInput(),  # Usa DatePickerInput para el campo beginningDate
-            'endingDate': DateInput(),  # Usa DatePickerInput para el campo finalDate
+            'beginningDate': forms.DateInput(),  # Usa DatePickerInput para el campo beginningDate
+            'endingDate': forms.DateInput(),  # Usa DatePickerInput para el campo finalDate
         }
 
-
 class SubjectForm(forms.ModelForm):
+    def __init__(self, user, args, **kwargs):
+        super(SubjectForm, self).__init__(args, kwargs)
+        self.fields['course'].queryset = Course.objects.filter(creatorUser=user)
+
     class Meta:
         model = Subject
         fields = ['course', 'name', 'teacher', 'credits']
 
-
 class TaskForm(forms.ModelForm):
+    def __init__(self, user, *args, **kwargs):
+        super(TaskForm, self).__init__(*args, **kwargs)
+        self.fields['subject'].queryset = Subject.objects.filter(course__creatorUser=user)
+
     class Meta:
         model = Task
         fields = ['subject', 'name', 'deadline', 'hour', 'description', 'priority']
-
-"""class SignUpForm(forms.ModelForm):
-    class Meta:
-        model = UserTO
-        fields = ['name', 'email', 'password']
-
-
-class SignInForm(forms.ModelForm):
-    password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
-    class Meta:
-        model = UserTO
-        fields = ['email', 'password']
-"""
